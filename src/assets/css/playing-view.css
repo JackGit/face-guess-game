@@ -36,6 +36,7 @@
   height: 100vw;
   box-sizing: border-box;
   overflow: hidden;
+  background: #fff;
 }
 .c-sniper__aim {
   position: absolute;

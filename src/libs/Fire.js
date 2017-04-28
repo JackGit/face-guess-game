@@ -125,9 +125,9 @@ Fire.prototype.stop = function () {
 
 Fire.prototype.destroy = function () {
 	this.stop()
-	this.flames = null
-	this.spark = null
-	this.spark2 = null
+	this.flames = []
+	this.spark = []
+	this.spark2 = []
 }
 
 function Flame (position) {

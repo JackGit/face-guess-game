@@ -33,8 +33,8 @@ export default {
         skipFrame: function () {
     			return {
     				flame: this.flames.length > 3,
-    				spark: this.spark.length > 6,
-    				spark2: this.spark2.length > 2
+    				spark: true,
+    				spark2: true
     			}
     		}
       })

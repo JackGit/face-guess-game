@@ -27,13 +27,16 @@
 
 <script>
 import '@/assets/css/playing-view.css'
+import Game from '@/libs/Game'
 import Interlace from '@/libs/Interlace'
 import Fire from '@/libs/Fire'
 
 export default {
+  interlace: null,
+
   mounted () {
     this.initFire()
-    this.initInterlace()
+    this.initGame()
   },
 
   destroy () {
@@ -59,6 +62,11 @@ export default {
       fire.start()
       this.$options.fire = fire
     },
+    initGame () {
+      this.initInterlace()
+      window.game = new Game(this.$options.interlace)
+      window.game.start()
+    },
     initInterlace () {
       let interlaceEl = this.$refs.interlace
       let interlace = new Interlace(interlaceEl, {
@@ -67,6 +75,7 @@ export default {
         images: ['http://qiniu.jackyang.me/h5/image/face_qtw.jpg', 'http://qiniu.jackyang.me/h5/image/face_ldk.jpg']
       })
       interlace.init()
+      this.$options.interlace = interlace
     }
   }
 }
