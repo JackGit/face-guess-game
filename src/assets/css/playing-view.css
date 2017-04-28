@@ -1,19 +1,101 @@
 .c-playingView {
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.c-interlace {
-  background: #fff;
+.c-playingView__header {
+  position: absolute;
+  top: 16%;
+  right: -10px;
+  width: 60%;
+  z-index: 20;
+  text-align: center;
+  font-size: 0;
+  box-sizing: border-box;
+  padding: 4px 10px 4px 0;
+  background-color: rgba(255,255,255,.4);
+  opacity: .8;
+  transform: skewX(-10deg);
+  box-shadow: 1px 1px 4px rgba(0,0,0,.6);
+}
+
+.c-playingView__logo {
+  width: 90%;
+}
+
+/* sniper view */
+.c-sniper {
+  position: relative;
+  top: 4%;
+  padding: 5px;
   width: 100vw;
   height: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
 }
-
-.c-aim {
+.c-sniper__aim {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+.c-sniper__spark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+.c-sniper__cloud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  z-index: 1;
+}
+.c-interlace {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.c-logo__img--small {
-  height: 40px;
+/* selections */
+.c-playingView__selections {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.c-selections__item {
+  display: inline-block;
+  width: 40vw;
+  height: 14vw;
+  line-height: 14vw;
+  margin: 2vw;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.6);
+  border-radius: 2px;
+  text-align: center;
+  /*margin: 10px 4px;
+  padding-top: 10px;
+  padding-left: 64px;*/
+  color: rgba(255,255,255,.8);
+  box-sizing: border-box;
+  /*background-image: url(../images/selection_background.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  opacity: .8;*/
 }

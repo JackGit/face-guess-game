@@ -8,7 +8,7 @@
       <img class="c-logo__img" src="../assets/images/logo.png">
       <img class="c-logo__txt" src="../assets/images/logo_text.png">
     </div>
-    <canvas ref="canvas" class="c-spark"></canvas>
+    <canvas ref="canvas" class="c-welcomeView__spark"></canvas>
 
     <button>开始</button>
   </div>
