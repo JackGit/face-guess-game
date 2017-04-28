@@ -1,0 +1,19 @@
+.c-playingView {
+
+}
+
+.c-interlace {
+  background: #fff;
+  width: 100vw;
+  height: 100vw;
+}
+
+.c-aim {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+}
+
+.c-logo__img--small {
+  height: 40px;
+}
