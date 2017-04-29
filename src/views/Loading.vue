@@ -7,12 +7,15 @@
 
 <script>
 import '@/assets/css/loading-view.css'
+import GameData from '@/libs/GameData'
+import Loader from 'resource-loader'
 import Fire from '@/libs/Fire'
 
 export default {
   fire: null,
 
   mounted () {
+    this.initLoader()
     this.initFire()
   },
 
@@ -23,6 +26,22 @@ export default {
   },
 
   methods: {
+    initLoader () {
+      let loader = new Loader()
+
+      GameData.forEach(data => {
+        loader.add('IMG_' + data.id, data.image, { crossOrigin: true })
+      })
+      loader.onProgress.add(() => {
+        console.log(loader.progress)
+      })
+      loader.onComplete.add(() => {
+        setTimeout(_ => this.$router.push({ name: 'Welcome' }, 500))
+      })
+      loader.load()
+
+      window.loader = loader
+    },
     initFire () {
       let fire = new Fire(this.$refs.canvas, {
         width: 200,
