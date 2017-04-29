@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "lodash.random": "^3.2.0",
+    "lodash.samplesize": "^4.2.0",
+    "lodash.shuffle": "^4.2.0",
     "object-assign": "^4.1.1",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1"
