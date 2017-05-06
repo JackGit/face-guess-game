@@ -13,3 +13,4 @@ const DATA = [
 ]
 
 export default DATA
+window.data = DATA

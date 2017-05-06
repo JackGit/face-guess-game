@@ -100,3 +100,9 @@
   background-position: center center;
   opacity: .8;*/
 }
+.is-reveal .c-selections__item.correct {
+  border: 1px solid green;
+}
+.is-reveal .c-selections__item.wrong {
+  border: 1px solid red;
+}

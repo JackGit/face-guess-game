@@ -10,7 +10,7 @@
     </div>
     <canvas ref="canvas" class="c-welcomeView__spark"></canvas>
 
-    <button>开始</button>
+    <button @click="start()" style="position:absolute;z-index:10">开始</button>
   </div>
 </template>
 
@@ -47,6 +47,9 @@ export default {
       fire.updatePosition(window.innerWidth * .5, window.innerHeight * 1.4)
       fire.start()
       this.$options.fire = fire
+    },
+    start () {
+      this.$router.replace({ name: 'Playing' })
     }
   }
 }

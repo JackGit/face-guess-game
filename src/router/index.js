@@ -6,8 +6,7 @@ import Playing from '@/views/Playing'
 import Result from '@/views/Result'
 
 Vue.use(Router)
-
-export default new Router({
+const router = new Router({
   routes: [{
     path: '/welcome',
     name: 'Welcome',
@@ -26,3 +25,5 @@ export default new Router({
     component: Result
   }]
 })
+
+export default router

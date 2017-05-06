@@ -16,11 +16,10 @@
     </div>
 
     <!-- selections -->
-    <ul class="c-playingView__selections">
-      <li class="c-selections__item">侯亮平</li>
-      <li class="c-selections__item">陈清泉</li>
-      <li class="c-selections__item">高育良</li>
-      <li class="c-selections__item">陈海</li>
+    <ul :class="{'c-playingView__selections': true, 'is-reveal': showAnswer}">
+      <li :class="{'c-selections__item': true, 'correct': answer === item.id && selected === item.id, 'wrong': answer !== item.id && selected === item.id}"
+          v-for="item in selections"
+          @click="checkAnswer($event, item.id)">{{item.name}}</li>
     </ul>
   </div>
 </template>
@@ -33,6 +32,15 @@ import Fire from '@/libs/Fire'
 
 export default {
   interlace: null,
+
+  data () {
+    return {
+      selections: [],
+      selected: null,
+      answer: null,
+      showAnswer: false
+    }
+  },
 
   mounted () {
     this.initFire()
@@ -66,16 +74,37 @@ export default {
       this.initInterlace()
       window.game = new Game(this.$options.interlace)
       window.game.start()
+      window.game.clearResult()
+      this.nextQuestion()
     },
     initInterlace () {
       let interlaceEl = this.$refs.interlace
       let interlace = new Interlace(interlaceEl, {
         width: interlaceEl.clientWidth,
-        height: interlaceEl.clientHeight,
-        images: ['http://qiniu.jackyang.me/h5/image/face_qtw.jpg', 'http://qiniu.jackyang.me/h5/image/face_ldk.jpg']
+        height: interlaceEl.clientHeight
       })
-      interlace.init()
       this.$options.interlace = interlace
+    },
+    nextQuestion () {
+      let question = window.game.nextQuestion()
+      this.showAnswer = false
+      this.selections = question.selections
+      this.answer = question.answer
+    },
+    checkAnswer (event, id) {
+      let game = window.game
+      game.checkAnswer(id)
+      this.selected = id
+      this.showAnswer = true
+
+      setTimeout(() => {
+        if (game.hasMoreQuestion()) {
+          this.nextQuestion()
+        } else {
+          game.stop()
+          this.$router.replace({ name: 'Result' })
+        }
+      }, 700)
     }
   }
 }

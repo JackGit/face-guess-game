@@ -15,7 +15,8 @@ export default class Game {
     this.target = {x: interlace.options.width / 2, y: interlace.options.height / 2}
 
     this.questions = []
-    this.currentQuestionIndex = 0
+    this.currentQuestionIndex = -1
+    this.result = []
 
     this._init()
   }
@@ -36,8 +37,8 @@ export default class Game {
     let w = this.interlace.options.width
     let h = this.interlace.options.height
     this.target = {
-      x: w / 2 + random(w / -8, w / 8),
-      y: h / 2 + random(h / -8, h / 8)
+      x: w / 2 + random(w / -10, w / 10),
+      y: h / 2 + random(h / -10, h / 10)
     }
   }
 
@@ -50,6 +51,12 @@ export default class Game {
       this._generateTarget()
     }
     this._move()
+  }
+
+  _center () {
+    let p = [this.interlace.options.width / 2, this.interlace.options.height / 2]
+    this.interlace.update([p])
+    this._translate(p)
   }
 
   _move () {
@@ -84,11 +91,36 @@ export default class Game {
       this.stop()
       this.interlace.setImages(question.images)
       this.start()
+      return question
     }
+  }
+
+  hasMoreQuestion () {
+    return this.currentQuestionIndex < this.questions.length - 1
   }
 
   currentQuestion () {
     return this.questions[this.currentQuestionIndex]
+  }
+
+  clearResult () {
+    this.result = []
+  }
+
+  checkAnswer (selection) {
+    let question = this.currentQuestion()
+    if (question.answer === selection) {
+      this.result.push(true)
+    } else {
+      this.result.push(false)
+    }
+
+    this.stop()
+    
+    // display the answer image
+    let image = DATA.filter(d => d.id === question.answer)[0].image
+    this.interlace.setImages([image])
+    this._center()
   }
 }
 
@@ -113,7 +145,7 @@ function generateQuestionList (size) {
 
     questions.push({
       images,
-      selections,
+      selections: shuffle(selections),
       answer: target.id
     })
   }

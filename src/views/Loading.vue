@@ -1,7 +1,7 @@
 <template>
   <main class="c-loadingView">
     <canvas ref="canvas" class="c-loadingView__canvas"></canvas>
-    <h4 class="c-loadingView__percentage">13%</h4>
+    <h4 class="c-loadingView__percentage">{{percentage}}%</h4>
   </main>
 </template>
 
@@ -13,6 +13,12 @@ import Fire from '@/libs/Fire'
 
 export default {
   fire: null,
+
+  data () {
+    return {
+      percentage: 0
+    }
+  },
 
   mounted () {
     this.initLoader()
@@ -30,13 +36,17 @@ export default {
       let loader = new Loader()
 
       GameData.forEach(data => {
-        loader.add('IMG_' + data.id, data.image, { crossOrigin: true })
+        loader.add(data.image, data.image, { crossOrigin: true }, resource => {
+          data.image = resource.data
+        })
       })
       loader.onProgress.add(() => {
-        console.log(loader.progress)
+        this.percentage = Math.round(loader.progress)
       })
       loader.onComplete.add(() => {
-        setTimeout(_ => this.$router.push({ name: 'Welcome' }, 500))
+        setTimeout(() => {
+          this.$router.replace({ name: 'Welcome' })
+        }, 500)
       })
       loader.load()
 
