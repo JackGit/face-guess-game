@@ -1,16 +1,16 @@
 <template>
   <div class="c-playingView">
     <header class="c-playingView__header">
-      <img class="c-playingView__logo" src="../assets/images/logo_text_small.png">
+      <img class="c-playingView__logo" src="http://qiniu.jackyang.me/h5/image/logo_text_small.png">
     </header>
 
     <div class="c-sniper">
       <!-- the mask -->
-      <img class="c-sniper__aim" src="../assets/images/sniper_view.png">
+      <img class="c-sniper__aim" src="http://qiniu.jackyang.me/h5/image/sniper_view.png">
       <!-- the interlace area -->
       <div class="c-interlace" ref="interlace"></div>
       <!-- cloud -->
-      <img src="../assets/images/cloud_02.png" class="c-sniper__cloud">
+      <img src="http://qiniu.jackyang.me/h5/image/cloud_02.png" class="c-sniper__cloud">
       <!-- spark -->
       <canvas ref="canvas" class="c-sniper__spark"></canvas>
     </div>
@@ -61,7 +61,7 @@ export default {
         skipFrame: function () {
           return {
             flame: true,
-            spark: this.spark.length > 10,
+            spark: this.spark.length > 20,
             spark2: true
           }
         }
@@ -92,6 +92,10 @@ export default {
       this.answer = question.answer
     },
     checkAnswer (event, id) {
+      if (this.showAnswer) {
+        return
+      }
+      
       let game = window.game
       game.checkAnswer(id)
       this.selected = id

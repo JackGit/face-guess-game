@@ -37,8 +37,8 @@ export default class Game {
     let w = this.interlace.options.width
     let h = this.interlace.options.height
     this.target = {
-      x: w / 2 + random(w / -10, w / 10),
-      y: h / 2 + random(h / -10, h / 10)
+      x: w / 2 + random(w / -12, w / 12),
+      y: h / 2 + random(h / -12, h / 12)
     }
   }
 
@@ -116,7 +116,7 @@ export default class Game {
     }
 
     this.stop()
-    
+
     // display the answer image
     let image = DATA.filter(d => d.id === question.answer)[0].image
     this.interlace.setImages([image])

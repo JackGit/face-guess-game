@@ -40,6 +40,18 @@ export default {
           data.image = resource.data
         })
       })
+
+      ;[
+        'http://qiniu.jackyang.me/h5/image/sniper_view.png',
+        'http://qiniu.jackyang.me/h5/image/cloud_01.png',
+        'http://qiniu.jackyang.me/h5/image/cloud_02.png',
+        'http://qiniu.jackyang.me/h5/image/logo.png',
+        'http://qiniu.jackyang.me/h5/image/logo_text.png',
+        'http://qiniu.jackyang.me/h5/image/logo_text_small.png'
+      ].forEach(url => {
+        loader.add(url, url)
+      })
+
       loader.onProgress.add(() => {
         this.percentage = Math.round(loader.progress)
       })

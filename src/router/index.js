@@ -8,6 +8,8 @@ import Result from '@/views/Result'
 Vue.use(Router)
 const router = new Router({
   routes: [{
+    path: '/', redirect: '/loading'
+  }, {
     path: '/welcome',
     name: 'Welcome',
     component: Welcome

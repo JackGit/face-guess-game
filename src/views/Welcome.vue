@@ -1,16 +1,17 @@
 <template>
   <div class="c-welcomeView">
     <div class="c-clouds">
-      <img class="c-cloud c0" src="../assets/images/cloud_01.png">
-      <img class="c-cloud c1" src="../assets/images/cloud_02.png">
+      <img class="c-cloud c0" src="http://qiniu.jackyang.me/h5/image/cloud_01.png">
+      <img class="c-cloud c1" src="http://qiniu.jackyang.me/h5/image/cloud_02.png">
     </div>
     <div class="c-logo">
-      <img class="c-logo__img" src="../assets/images/logo.png">
-      <img class="c-logo__txt" src="../assets/images/logo_text.png">
+      <img class="c-logo__img" src="http://qiniu.jackyang.me/h5/image/logo.png">
+      <img class="c-logo__txt" src="http://qiniu.jackyang.me/h5/image/logo_text.png">
     </div>
     <canvas ref="canvas" class="c-welcomeView__spark"></canvas>
 
-    <button @click="start()" style="position:absolute;z-index:10">开始</button>
+    <p style="position:absolute;top:60%;width:100%;text-align:center;color:rgba(255,255,255,.9)">测试一下你的反贪能力</p>
+    <span class="c-welcomeView__start" @click="start()">GO</span>
   </div>
 </template>
 
