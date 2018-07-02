@@ -115,7 +115,7 @@ export default class Game {
     }
 
     this.stop()
-    
+
     // display the answer image
     let image = DATA.filter(d => d.id === question.answer)[0].image
     this.interlace.setImages([image])

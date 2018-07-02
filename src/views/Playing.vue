@@ -66,6 +66,10 @@ export default {
       this.answer = question.answer
     },
     checkAnswer (event, id) {
+      if (this.showAnswer) {
+        return
+      }
+      
       let game = window.game
       game.checkAnswer(id)
       this.selected = id
