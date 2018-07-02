@@ -1,24 +1,22 @@
 <template>
   <div class="c-playingView">
     <header class="c-playingView__header">
-      <img class="c-playingView__logo" src="../assets/images/logo_text_small.png">
+      <img class="c-playingView__logo" src="~@/assets/images/logo_russia_2018.png">
     </header>
 
     <div class="c-sniper">
-      <!-- the mask -->
+      <!-- the mask
       <img class="c-sniper__aim" src="../assets/images/sniper_view.png">
+      -->
       <!-- the interlace area -->
       <div class="c-interlace" ref="interlace"></div>
-      <!-- cloud -->
-      <img src="../assets/images/cloud_02.png" class="c-sniper__cloud">
-      <!-- spark -->
-      <canvas ref="canvas" class="c-sniper__spark"></canvas>
-    </div>
+]    </div>
 
     <!-- selections -->
     <ul :class="{'c-playingView__selections': true, 'is-reveal': showAnswer}">
       <li :class="{'c-selections__item': true, 'correct': answer === item.id && selected === item.id, 'wrong': answer !== item.id && selected === item.id}"
-          v-for="item in selections"
+          v-for="(item, i) in selections"
+          :key="i"
           @click="checkAnswer($event, item.id)">{{item.name}}</li>
     </ul>
   </div>
@@ -28,7 +26,6 @@
 import '@/assets/css/playing-view.css'
 import Game from '@/libs/Game'
 import Interlace from '@/libs/Interlace'
-import Fire from '@/libs/Fire'
 
 export default {
   interlace: null,
@@ -43,33 +40,10 @@ export default {
   },
 
   mounted () {
-    this.initFire()
     this.initGame()
   },
 
-  destroy () {
-    this.$options.fire.destroy()
-  },
-
   methods: {
-    initFire () {
-      let fire = new Fire(this.$refs.canvas, {
-        width: window.innerWidth,
-        height: window.innerHeight,
-        enableFlame: false,
-        enableSpark2: false,
-        skipFrame: function () {
-          return {
-            flame: true,
-            spark: this.spark.length > 10,
-            spark2: true
-          }
-        }
-      })
-      fire.updatePosition(window.innerWidth * .5, window.innerWidth * 2)
-      fire.start()
-      this.$options.fire = fire
-    },
     initGame () {
       this.initInterlace()
       window.game = new Game(this.$options.interlace)

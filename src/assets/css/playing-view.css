@@ -8,29 +8,18 @@
 }
 
 .c-playingView__header {
-  position: absolute;
-  top: 16%;
-  right: -10px;
-  width: 60%;
-  z-index: 20;
-  text-align: center;
-  font-size: 0;
-  box-sizing: border-box;
-  padding: 4px 10px 4px 0;
-  background-color: rgba(255,255,255,.4);
-  opacity: .8;
-  transform: skewX(-10deg);
-  box-shadow: 1px 1px 4px rgba(0,0,0,.6);
+  position: relative;
+  margin: 8px 16px;
 }
 
 .c-playingView__logo {
-  width: 90%;
+  width: 60px;
+  height: 60px;
 }
 
 /* sniper view */
 .c-sniper {
   position: relative;
-  top: 4%;
   padding: 5px;
   width: 100vw;
   height: 100vw;

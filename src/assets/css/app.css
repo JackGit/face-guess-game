@@ -1,10 +1,15 @@
+@font-face {
+  font-family: Russia;
+  src: url('~@/assets/fonts/russia.ttf');
+}
+
 html, body {
   margin: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: #336295;
   color: #fff;
-  font-family: 微软雅黑;
+  font-family: Russia, '微软雅黑';
 }
 
 /* transition animations */

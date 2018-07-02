@@ -1,14 +1,16 @@
 <template>
   <div id="app">
-    <transition name="fade">
-      <router-view></router-view>
-    </transition>
+    <Playing />
   </div>
 </template>
 
 <script>
 import '@/assets/css/app.css'
+import Playing from '@/views/Playing'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Playing
+  }
 }
 </script>

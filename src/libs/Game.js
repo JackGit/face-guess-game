@@ -1,4 +1,3 @@
-import Interlace from './Interlace'
 import DATA from './GameData'
 import random from 'lodash.random'
 import sampleSize from 'lodash.samplesize'
@@ -37,8 +36,8 @@ export default class Game {
     let w = this.interlace.options.width
     let h = this.interlace.options.height
     this.target = {
-      x: w / 2 + random(w / -10, w / 10),
-      y: h / 2 + random(h / -10, h / 10)
+      x: w / 2 + random(w / -5, w / 5),
+      y: h / 2 + random(h / -5, h / 5)
     }
   }
 
