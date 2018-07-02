@@ -7,7 +7,8 @@ html, body {
   margin: 0;
   width: 100%;
   height: 100%;
-  background: #336295;
+  /* background: #336295; */
+  background: #fff;
   color: #fff;
   font-family: Russia, '微软雅黑';
 }

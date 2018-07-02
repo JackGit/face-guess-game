@@ -50,7 +50,7 @@ export default class Interlace {
       this.update(this.intersections)
     } else {
       this.images = images.map(image => {
-        let img = new Image()
+        const img = new Image()
         img.crossOrigin = true
         img.onload = this._handleImageLoaded.bind(this)
         img.src = image
