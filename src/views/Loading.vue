@@ -1,13 +1,20 @@
 <template>
   <main class="c-loadingView">
     <canvas ref="canvas" class="c-loadingView__canvas"></canvas>
-    <h4 class="c-loadingView__percentage">{{percentage}}%</h4>
+    <h4 v-show="!loaded" class="c-loadingView__percentage">{{percentage}}%</h4>
+    <div v-show="loaded">
+      <button @click="clickHandler"></button>
+      <ul>
+        <li @click="clickHandler(1)">伪球迷</li>
+        <li @click="clickHandler(2)">资深球迷</li>
+      </ul>
+    </div>
   </main>
 </template>
 
 <script>
 import '@/assets/css/loading-view.css'
-import GameData from '@/libs/GameData'
+import GameData from '@/constants/game'
 import Loader from 'resource-loader'
 import Fire from '@/libs/Fire'
 
@@ -16,7 +23,8 @@ export default {
 
   data () {
     return {
-      percentage: 0
+      percentage: 0,
+      loaded: false
     }
   },
 
@@ -33,7 +41,7 @@ export default {
 
   methods: {
     initLoader () {
-      let loader = new Loader()
+      const loader = new Loader()
 
       GameData.forEach(data => {
         loader.add(data.image, data.image, { crossOrigin: true }, resource => {
@@ -57,7 +65,7 @@ export default {
       })
       loader.onComplete.add(() => {
         setTimeout(() => {
-          this.$router.replace({ name: 'Welcome' })
+          this.loaded = true
         }, 500)
       })
       loader.load()
@@ -65,7 +73,7 @@ export default {
       window.loader = loader
     },
     initFire () {
-      let fire = new Fire(this.$refs.canvas, {
+      const fire = new Fire(this.$refs.canvas, {
         width: 200,
         height: 300,
         enableMouseTrack: false,
@@ -82,6 +90,9 @@ export default {
       fire.updatePosition(100, 260)
       fire.start()
       this.$options.fire = fire
+    },
+    clickHandler (level) {
+      this.$emit('start', level)
     }
   }
 }

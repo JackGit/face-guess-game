@@ -1,23 +1,23 @@
 <template>
   <div class="c-playingView">
-    <header class="c-playingView__header">
+    <header class="c-header">
       <img class="c-playingView__logo" src="~@/assets/images/logo_russia_2018.png">
     </header>
 
     <div class="c-sniper">
-      <!-- the mask
-      <img class="c-sniper__aim" src="../assets/images/sniper_view.png">
-      -->
+      <!-- the mask -->
+      <img class="c-sniper__aim" src="~@/assets/images/frame.png">
       <!-- the interlace area -->
       <div class="c-interlace" ref="interlace"></div>
 ]    </div>
 
     <!-- selections -->
-    <ul :class="{'c-playingView__selections': true, 'is-reveal': showAnswer}">
-      <li :class="{'c-selections__item': true, 'correct': answer === item.id && selected === item.id, 'wrong': answer !== item.id && selected === item.id}"
-          v-for="(item, i) in selections"
-          :key="i"
-          @click="checkAnswer($event, item.id)">{{item.name}}</li>
+    <ul class="c-playingView__selections">
+      <li v-for="(item, i) in selections" :key="i" @click="checkAnswer($event, item.id)">
+        <div class="c-selections__item">{{item.nameEN}}</div>
+        <span class="c-selections__correct" v-show="showAnswer && answer === item.id && selected === item.id">Correct</span>
+        <span class="c-selections__wrong" v-show="showAnswer && answer !== item.id && selected === item.id">Wrong</span>
+      </li>
     </ul>
   </div>
 </template>
@@ -70,20 +70,36 @@ export default {
         return
       }
       
-      let game = window.game
+      const { game } = window
       game.checkAnswer(id)
       this.selected = id
       this.showAnswer = true
 
+      const endGame = () => {
+        game.stop()
+        this.$emit('end')
+      }
+
       setTimeout(() => {
-        if (game.hasMoreQuestion()) {
-          this.nextQuestion()
+        if (this.answer !== id) {
+          endGame()
         } else {
-          game.stop()
-          this.$router.replace({ name: 'Result' })
+          if (game.hasMoreQuestion()) {
+            this.nextQuestion()
+          } else {
+            endGame()
+          }
         }
       }, 700)
     }
   }
 }
 </script>
+
+<style scoped>
+.c-header {
+  position: relative;
+  padding: 8px 16px 4px 16px;
+  background: #336295;
+}
+</style>
