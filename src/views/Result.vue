@@ -3,7 +3,7 @@
     <div class="c-top">
     </div>
     <div class="c-bottom">
-      <p class="c-text">成功的记住了{{count}}名战士</p>
+      <p class="c-text">游戏结束，您成功的识别出了{{count}}名球员</p>
       <span class="c-btn" @click="clickHandler">再来一次</span>
     </div>
   </div>
@@ -46,6 +46,11 @@ export default {
   width: 100%;
   height: 20vh;
   background: #336295;
+  background-image: url(~@/assets/images/bg_blue.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: bold;
 }
 .c-text {
   position: absolute;

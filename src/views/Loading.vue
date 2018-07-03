@@ -1,19 +1,21 @@
 <template>
   <main class="c-loadingView">
-    <canvas ref="canvas" class="c-loadingView__canvas"></canvas>
-    <h4 v-show="!loaded" class="c-loadingView__percentage">{{percentage}}%</h4>
-    <div v-show="loaded">
-      <button @click="clickHandler"></button>
-      <ul>
-        <li @click="clickHandler(1)">伪球迷</li>
-        <li @click="clickHandler(2)">资深球迷</li>
-      </ul>
-    </div>
+    <canvas ref="canvas" class="c-canvas"></canvas>
+    <img class="c-logo" src="~@/assets/images/logo_russia_2018_cup.png" />
+    <h4 v-show="!loaded" class="c-percentage">{{percentage}}%</h4>
+    <transition name="fade">
+      <div v-show="loaded">
+        <p class="c-tips">请选择难度开始游戏</p>
+        <ul class="c-levels">
+          <li @click="clickHandler('easy')" :class="{selected: selectLevel === 'easy'}">伪球迷 (EASY)</li>
+          <li @click="clickHandler('hard')" :class="{selected: selectLevel === 'hard'}">资深球迷 (HARD)</li>
+        </ul>
+      </div>
+    </transition>
   </main>
 </template>
 
 <script>
-import '@/assets/css/loading-view.css'
 import GameData from '@/constants/game'
 import Loader from 'resource-loader'
 import Fire from '@/libs/Fire'
@@ -24,7 +26,8 @@ export default {
   data () {
     return {
       percentage: 0,
-      loaded: false
+      loaded: false,
+      selectLevel: null
     }
   },
 
@@ -92,8 +95,91 @@ export default {
       this.$options.fire = fire
     },
     clickHandler (level) {
-      this.$emit('start', level)
+      this.selectLevel = level
+      setTimeout(() => {
+        this.$emit('start', level)
+      }, 200)
     }
   }
 }
 </script>
+
+<style scoped>
+.c-loadingView {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  background-image: url(~@/assets/images/bg_red.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+.c-logo {
+  position: absolute;
+  top: 33vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10vh;
+  z-index: 1;
+}
+.c-canvas {
+  position: absolute;
+  top: 4vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  width: 24vh;
+  height: 40vh;
+  z-index: 2;
+}
+.c-percentage {
+  position: absolute;
+  top: 54vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 100;
+  color: rgba(255,255,255,.7);
+}
+.c-tips {
+  position: absolute;
+  top: 56vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.8);
+}
+.c-levels {
+  position: absolute;
+  left: 0;
+  top: 64vh;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.c-levels li {
+  display: inline-block;
+  width: 54vw;
+  height: 13vw;
+  line-height: 13vw;
+  margin-bottom: 2vw;
+  color: #fff;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url(~@/assets/images/txt_bg_blue_bordered.png);
+  transition: all .3s ease;
+}
+.c-levels li.selected {
+  color: #336295;
+  background-image: url(~@/assets/images/txt_bg_white_bordered.png);
+}
+</style>

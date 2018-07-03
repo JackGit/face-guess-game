@@ -7,7 +7,7 @@
       <playing v-if="status === 'playing'" :level="gameLevel" @end="gameEndHandler" />
     </transition>
     <transition name="fade">
-      <result v-if="status === 'end'" @again="playAgainHandler" />
+      <result v-if="status === 'ended'" @again="playAgainHandler" />
     </transition>
   </div>
 </template>
