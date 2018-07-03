@@ -1,6 +1,6 @@
 <template>
   <div class="c-playingView">
-    <header class="c-playingView__header">
+    <header class="c-header">
       <img class="c-playingView__logo" src="~@/assets/images/logo_russia_2018.png">
     </header>
 
@@ -75,15 +75,31 @@ export default {
       this.selected = id
       this.showAnswer = true
 
+      const endGame = () => {
+        game.stop()
+        this.$emit('end')
+      }
+
       setTimeout(() => {
-        if (game.hasMoreQuestion()) {
-          this.nextQuestion()
+        if (this.answer !== id) {
+          endGame()
         } else {
-          game.stop()
-          this.$router.replace({ name: 'Result' })
+          if (game.hasMoreQuestion()) {
+            this.nextQuestion()
+          } else {
+            endGame()
+          }
         }
       }, 700)
     }
   }
 }
 </script>
+
+<style scoped>
+.c-header {
+  position: relative;
+  padding: 8px 16px 4px 16px;
+  background: #336295;
+}
+</style>

@@ -7,8 +7,7 @@ export default class Game {
   constructor (interlace) {
     this.interlace = interlace
     this.running = false
-    this.vx = 1
-    this.vy = 1
+    this.vx = this.vy = 1
 
     this.position = {x: interlace.options.width / 2, y: interlace.options.height / 2}
     this.target = {x: interlace.options.width / 2, y: interlace.options.height / 2}
@@ -33,8 +32,8 @@ export default class Game {
   }
 
   _generateTarget () {
-    let w = this.interlace.options.width
-    let h = this.interlace.options.height
+    const w = this.interlace.options.width
+    const h = this.interlace.options.height
     this.target = {
       x: w / 2 + random(w / -5, w / 5),
       y: h / 2 + random(h / -5, h / 5)
@@ -42,7 +41,7 @@ export default class Game {
   }
 
   _reachTarget () {
-    return Math.abs(this.target.x - this.position.x) < 1 && Math.abs(this.target.y - this.position.y) < 1
+    return Math.abs(this.target.x - this.position.x) < this.vx && Math.abs(this.target.y - this.position.y) < this.vy
   }
 
   _update () {
@@ -53,13 +52,13 @@ export default class Game {
   }
 
   _center () {
-    let p = [this.interlace.options.width / 2, this.interlace.options.height / 2]
+    const p = [this.interlace.options.width / 2, this.interlace.options.height / 2]
     this.interlace.update([p])
     this._translate(p)
   }
 
   _move () {
-    let point = [
+    const point = [
       this.position.x += this.vx * Math.sign(this.target.x - this.position.x),
       this.position.y += this.vy * Math.sign(this.target.y - this.position.y)
     ]
@@ -68,9 +67,15 @@ export default class Game {
   }
 
   _translate (point) {
-    let x = this.interlace.options.width / 2 - point[0]
-    let y = this.interlace.options.height / 2 - point[1]
+    const x = this.interlace.options.width / 2 - point[0]
+    const y = this.interlace.options.height / 2 - point[1]
     this.interlace.el.style.transform = `translateX(${x}px) translateY(${y}px)`
+  }
+
+  _updateSpeed () {
+    const pace = .5
+    const last = this.vx
+    this.vx = this.vy = last + pace
   }
 
   start () {
@@ -89,6 +94,7 @@ export default class Game {
       let question = this.questions[++ this.currentQuestionIndex]
       this.stop()
       this.interlace.setImages(question.images)
+      this._updateSpeed()
       this.start()
       return question
     }
