@@ -16,11 +16,48 @@ import face15 from '@/assets/images/faces/face_15.png'
 import face16 from '@/assets/images/faces/face_16.png'
 import face17 from '@/assets/images/faces/face_17.png'
 
+import pic01 from '@/assets/images/pic_01.jpg'
+import pic02 from '@/assets/images/pic_02.jpg'
+import pic03 from '@/assets/images/pic_03.jpg'
+import pic04 from '@/assets/images/pic_04.jpg'
+import pic05 from '@/assets/images/pic_05.jpg'
+import pic06 from '@/assets/images/pic_06.jpg'
+import pic07 from '@/assets/images/pic_07.jpg'
+import pic08 from '@/assets/images/pic_08.jpg'
+import pic09 from '@/assets/images/pic_09.jpg'
+import pic10 from '@/assets/images/pic_10.jpg'
+import pic11 from '@/assets/images/pic_11.jpg'
+import pic12 from '@/assets/images/pic_12.jpg'
+import pic13 from '@/assets/images/pic_13.jpg'
+import pic14 from '@/assets/images/pic_14.jpg'
+import pic15 from '@/assets/images/pic_15.jpg'
+import pic16 from '@/assets/images/pic_16.jpg'
+import pic17 from '@/assets/images/pic_17.jpg'
+import pic18 from '@/assets/images/pic_18.jpg'
+
+import bgBlue from '@/assets/images/bg_blue.jpg'
+import bgRed from '@/assets/images/bg_red.jpg'
+import frame from '@/assets/images/frame.png'
+import txtBgBlueB from '@/assets/images/txt_bg_blue_bordered.png'
+import txtBgWhiteB from '@/assets/images/txt_bg_white_bordered.png'
+import txtBgWhite from '@/assets/images/txt_bg_white.png'
+
 export const FACES = {
   face01, face02, face03, face04, face05, face06, face07, face08,
   face09, face10, face11, face12, face13, face14, face15, face16, face17
 }
 
+export const PICS = {
+  pic01, pic02, pic03, pic04, pic05, pic06, pic07, pic08, pic09,
+  pic10, pic11, pic12, pic13, pic14, pic15, pic16, pic17, pic18,
+}
+
 export default {
-  ...FACES
+  ...FACES,
+  bgBlue,
+  bgRed,
+  frame,
+  txtBgBlueB,
+  txtBgWhiteB,
+  txtBgWhite
 }

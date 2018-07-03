@@ -20,7 +20,7 @@ export default class Game {
   }
 
   _init () {
-    this.questions = generateQuestionList(5)
+    this.questions = generateQuestionList(8)
     this._loop()
   }
 

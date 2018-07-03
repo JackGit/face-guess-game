@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import GameData from '@/constants/game'
 import Loader from 'resource-loader'
 import Fire from '@/libs/Fire'
+import IMAGES from '@/constants/images'
 
 export default {
   fire: null,
@@ -45,23 +45,8 @@ export default {
   methods: {
     initLoader () {
       const loader = new Loader()
-
-      GameData.forEach(data => {
-        loader.add(data.image, data.image, { crossOrigin: true }, resource => {
-          data.image = resource.data
-        })
-      })
-
-      ;[
-        'http://qiniu.jackyang.me/h5/image/sniper_view.png',
-        'http://qiniu.jackyang.me/h5/image/cloud_01.png',
-        'http://qiniu.jackyang.me/h5/image/cloud_02.png',
-        'http://qiniu.jackyang.me/h5/image/logo.png',
-        'http://qiniu.jackyang.me/h5/image/logo_text.png',
-        'http://qiniu.jackyang.me/h5/image/logo_text_small.png'
-      ].forEach(url => {
-        loader.add(url, url)
-      })
+      
+      Object.values(IMAGES).forEach(url => loader.add(url, url))
 
       loader.onProgress.add(() => {
         this.percentage = Math.round(loader.progress)

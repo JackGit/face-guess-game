@@ -1,24 +1,23 @@
 <template>
   <div class="c-resultView">
-    <div class="c-top">
+    <div class="c-top" :style="{backgroundImage:`url(${pic})`}">
     </div>
     <div class="c-bottom">
-      <p class="c-text">游戏结束，您成功的识别出了{{count}}名球员</p>
+      <p class="c-text">游戏结束，您识别出了{{count}}名球员</p>
       <span class="c-btn" @click="clickHandler">再来一次</span>
     </div>
   </div>
 </template>
 
 <script>
-import VueImgLoader from 'vue-img-loader'
+import { PICS } from '@/constants/images'
+import random from 'lodash.random'
+const picKeys = Object.keys(PICS)
 
 export default {
-  components: {
-    VueImgLoader
-  },
-
   data () {
     return {
+      pic: PICS[picKeys[random(0, picKeys.length - 1)]],
       count: window.game.result.length - 1
     }
   },
@@ -35,7 +34,7 @@ export default {
 .c-top {
   width: 100%;
   height: 80vh;
-  background: red;
+  background: #336295;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

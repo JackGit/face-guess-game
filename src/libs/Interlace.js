@@ -92,6 +92,10 @@ export default class Interlace {
     })
   }
 
+  _clear () {
+    this.context.clearRect(0, 0, this.options.width, this.options.height)
+  }
+
   _draw  (cell) {
     if (this.images.length === 0) {
       return
@@ -130,6 +134,7 @@ export default class Interlace {
   }
 
   setImages (images) {
+    this._clear()
     this._loadImages(images)
   }
 
