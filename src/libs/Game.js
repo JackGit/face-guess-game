@@ -41,7 +41,7 @@ export default class Game {
   }
 
   _reachTarget () {
-    return Math.abs(this.target.x - this.position.x) < this.vx && Math.abs(this.target.y - this.position.y) < this.vy
+    return Math.abs(this.target.x - this.position.x) <= this.vx && Math.abs(this.target.y - this.position.y) <= this.vy
   }
 
   _update () {
@@ -58,10 +58,14 @@ export default class Game {
   }
 
   _move () {
-    const point = [
-      this.position.x += this.vx * Math.sign(this.target.x - this.position.x),
-      this.position.y += this.vy * Math.sign(this.target.y - this.position.y)
-    ]
+    this.position.x = Math.abs(this.target.x - this.position.x) > this.vx
+      ? this.position.x + this.vx * Math.sign(this.target.x - this.position.x)
+      : this.position.x
+    this.position.y = Math.abs(this.target.y - this.position.y) > this.vy
+      ? this.position.y + this.vy * Math.sign(this.target.y - this.position.y)
+      : this.position.y
+    const point = [this.position.x, this.position.y]
+
     this.interlace.update([point])
     this._translate(point)
   }
