@@ -31,7 +31,7 @@ function configWX(appId, timestamp, nonceStr, signature) {
 }
 
 function setWXShare() {
-  const title = 'FIFA世界杯球员识别'
+  const title = 'FIFA世界杯人脸识别'
   const link = 'http://h5.jackyang.me/face-guess-game'
   const desc = '考验资深球迷的时候到了'
   const faceKeys = Object.keys(FACES)

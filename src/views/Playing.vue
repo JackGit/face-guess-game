@@ -117,12 +117,14 @@ export default {
 
 .c-header {
   position: relative;
-  padding: 8px 16px 4px 16px;
+  padding: 1vh 2vh .2vh 2vh;
 }
 
 .c-logo {
-  width: 54px;
-  height: 54px;
+  width: 10vh;
+  max-width: 54px;
+  height: 10vh;
+  max-height: 54px;
 }
 
 .c-tip {
@@ -163,7 +165,7 @@ export default {
   list-style: none;
   margin: 0;
   padding: 0;
-  margin-top: 8vw;
+  margin-top: 2vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
