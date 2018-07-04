@@ -85,6 +85,7 @@ export default {
       }
 
       setTimeout(() => {
+        this.selected = null
         if (this.answer !== id) {
           endGame()
         } else {

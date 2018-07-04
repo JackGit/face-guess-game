@@ -1,7 +1,13 @@
 <template>
   <div class="c-resultView">
-    <div class="c-top" :style="{backgroundImage:`url(${pic})`}">
-    </div>
+    <vue-img-loader
+      :src="pic"
+      :width="imgWidth"
+      :height="imgHeight"
+      :preview="preview"
+      center-type="cover"
+      transition="fade2"
+    />
     <div class="c-bottom">
       <p class="c-text">游戏结束，您识别出了{{count}}名球员</p>
       <span class="c-btn" @click="clickHandler">再来一次</span>
@@ -11,14 +17,24 @@
 
 <script>
 import { PICS } from '@/constants/images'
+import VueImgLoader from 'vue-img-loader'
 import random from 'lodash.random'
+
 const picKeys = Object.keys(PICS)
 
 export default {
+  components: {
+    VueImgLoader
+  },
+  
   data () {
+    const pic = PICS[picKeys[random(0, picKeys.length - 1)]]
     return {
-      pic: PICS[picKeys[random(0, picKeys.length - 1)]],
-      count: window.game.result.length - 1
+      preview: `${pic}?imageView2/1/w/100`,
+      pic,
+      count: window.game.result.filter(r => r).length,
+      imgWidth: window.innerWidth,
+      imgHeight: window.innerHeight * .8
     }
   },
 
@@ -31,14 +47,8 @@ export default {
 </script>
 
 <style scoped>
-.c-top {
-  width: 100%;
-  height: 80vh;
-  background: #336295;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url(~@/assets/images/pic_01.jpg);
+.c-resultView {
+  font-size: 0;
 }
 .c-bottom {
   position: relative;
@@ -49,6 +59,7 @@ export default {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  font-size: 16px;
   font-weight: bold;
 }
 .c-text {

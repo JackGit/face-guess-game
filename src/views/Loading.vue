@@ -1,6 +1,9 @@
 <template>
   <main class="c-loadingView">
-    <canvas ref="canvas" class="c-canvas"></canvas>
+    <transition name="fade">
+      <canvas v-show="loaded" ref="canvas" class="c-canvas"></canvas>
+    </transition>
+    
     <img class="c-logo" src="~@/assets/images/logo_russia_2018_cup.png" />
     <h4 v-show="!loaded" class="c-percentage">{{percentage}}%</h4>
     <transition name="fade">

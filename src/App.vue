@@ -70,4 +70,11 @@ html, body {
 .fade-enter, .fade-leave-to {
   opacity: 0
 }
+
+.fade2-enter-active, .fade2-leave-active {
+  transition: opacity 1s;
+}
+.fade2-enter, .fade2-leave-to {
+  opacity: 0;
+}
 </style>
