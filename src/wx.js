@@ -21,7 +21,7 @@ export function init () {
 /* weixin configs */
 function configWX(appId, timestamp, nonceStr, signature) {
   wx.config({
-    debug: true,
+    debug: false,
     appId,
     timestamp,
     nonceStr,
