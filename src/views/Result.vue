@@ -9,7 +9,8 @@
       transition="fade2"
     />
     <div class="c-bottom">
-      <p class="c-text">游戏结束，您识别出了{{count}}名球员</p>
+      <p class="c-text" v-if="allRight">恭喜，您识别出了所有{{count}}名球员！</p>
+      <p class="c-text" v-else>游戏结束，您识别出了{{count}}名球员</p>
       <span class="c-btn" @click="clickHandler">再来一次</span>
     </div>
   </div>
@@ -29,12 +30,14 @@ export default {
   
   data () {
     const pic = PICS[picKeys[random(0, picKeys.length - 1)]]
+    const count = window.game.result.filter(r => r).length
     return {
       preview: `${pic}?imageView2/1/w/100`,
       pic,
-      count: window.game.result.filter(r => r).length,
+      count,
       imgWidth: window.innerWidth,
-      imgHeight: window.innerHeight * .8
+      imgHeight: window.innerHeight * .8,
+      allRight: count === window.game.questions.length
     }
   },
 
