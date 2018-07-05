@@ -17,7 +17,19 @@ const DATA = [
   { id: '013', nameCN: '凯恩 ', nameEN: 'Harry Kane', image: FACES.face14 },
   { id: '014', nameCN: '阿扎尔', nameEN: 'Eden Hazard', image: FACES.face15 },
   { id: '015', nameCN: '法比尼奥', nameEN: 'Fabinho', image: FACES.face16 },
-  { id: '016', nameCN: '迪巴拉', nameEN: 'Paulo Dybala', image: FACES.face17 }
+  { id: '016', nameCN: '迪巴拉', nameEN: 'Paulo Dybala', image: FACES.face17 },
+
+  { id: '017', nameCN: '格里兹曼', nameEN: 'Antoine Griezmann', image: FACES.face18 },
+  { id: '018', nameCN: '科斯塔', nameEN: 'Diego Costa', image: FACES.face19 },
+  { id: '019', nameCN: '法尔考', nameEN: 'Falcao', image: FACES.face20 },
+  { id: '020', nameCN: '孙兴慜', nameEN: 'Heung-Min Son', image: FACES.face21 },
+  { id: '021', nameCN: '伊斯科', nameEN: 'Isco', image: FACES.face22 },
+  { id: '022', nameCN: 'J罗', nameEN: 'James Rodríguez', image: FACES.face23 },
+  { id: '023', nameCN: '小豌豆', nameEN: 'Javier Hernandez', image: FACES.face24 },
+  { id: '024', nameCN: '香川真司', nameEN: 'Kagawa Shinji', image: FACES.face25 },
+  { id: '025', nameCN: '本田圭佑', nameEN: 'Keisuke Honda', image: FACES.face26 },
+  { id: '026', nameCN: '博格巴', nameEN: 'Paul Pogba', image: FACES.face27 },
+  { id: '027', nameCN: '托尼克罗斯', nameEN: 'Toni Kroos', image: FACES.face28 }
 ]
 
 export default DATA

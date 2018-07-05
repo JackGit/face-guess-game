@@ -15,6 +15,17 @@ import face14 from '@/assets/images/faces/face_14.png'
 import face15 from '@/assets/images/faces/face_15.png'
 import face16 from '@/assets/images/faces/face_16.png'
 import face17 from '@/assets/images/faces/face_17.png'
+import face18 from '@/assets/images/faces/face_18.png'
+import face19 from '@/assets/images/faces/face_19.png'
+import face20 from '@/assets/images/faces/face_20.png'
+import face21 from '@/assets/images/faces/face_21.png'
+import face22 from '@/assets/images/faces/face_22.png'
+import face23 from '@/assets/images/faces/face_23.png'
+import face24 from '@/assets/images/faces/face_24.png'
+import face25 from '@/assets/images/faces/face_25.png'
+import face26 from '@/assets/images/faces/face_26.png'
+import face27 from '@/assets/images/faces/face_27.png'
+import face28 from '@/assets/images/faces/face_28.png'
 
 import pic01 from '@/assets/images/pic_01.jpg'
 import pic02 from '@/assets/images/pic_02.jpg'
@@ -44,7 +55,9 @@ import txtBgWhite from '@/assets/images/txt_bg_white.png'
 
 export const FACES = {
   face01, face02, face03, face04, face05, face06, face07, face08,
-  face09, face10, face11, face12, face13, face14, face15, face16, face17
+  face09, face10, face11, face12, face13, face14, face15, face16,
+  face17, face18, face19, face20, face21, face22, face23, face24,
+  face25, face26, face27, face28
 }
 
 export const PICS = {
