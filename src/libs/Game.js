@@ -12,7 +12,7 @@ export default class Game {
     this.position = {x: interlace.options.width / 2, y: interlace.options.height / 2}
     this.target = {x: interlace.options.width / 2, y: interlace.options.height / 2}
 
-    this.questions = []
+    this.questions = Game.questions
     this.currentQuestionIndex = -1
     this.result = []
 
@@ -20,7 +20,7 @@ export default class Game {
   }
 
   _init () {
-    this.questions = generateQuestionList(10)
+    // this.questions = generateQuestionList(10)
     this._loop()
   }
 
@@ -137,7 +137,7 @@ export default class Game {
  * generate questions of size:
  * [{ images: [], selections: [{ nameCN, nameEN, id }], answer: '001' }]
  */
-const generateQuestionList = (size) => {
+export const generateQuestionList = (size) => {
   const answerIds = sampleSize(DATA, size).map(item => item.id)
   const questions = answerIds.map(answerId => {
     const rest = DATA.filter(d => d.id !== answerId)
@@ -158,3 +158,5 @@ const generateQuestionList = (size) => {
 
   return shuffle(questions)
 }
+
+Game.questions = generateQuestionList(10)

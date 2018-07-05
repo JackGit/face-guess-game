@@ -19,9 +19,22 @@
 </template>
 
 <script>
+import Game from '@/libs/Game'
 import Loader from 'resource-loader'
 import Fire from '@/libs/Fire'
 import IMAGES from '@/constants/images'
+
+const gameFaces = () => {
+  const faces = []
+  Game.questions.forEach(q => {
+    q.images.forEach(img => {
+      if (!faces.includes(img)) {
+        faces.push(img)
+      }
+    })
+  })
+  return faces
+}
 
 export default {
   fire: null,
@@ -50,6 +63,7 @@ export default {
       const loader = new Loader()
       
       Object.values(IMAGES).forEach(url => loader.add(url, url))
+      gameFaces().forEach(url => loader.add(url, url))
 
       loader.onProgress.add(() => {
         this.percentage = Math.round(loader.progress)

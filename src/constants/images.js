@@ -53,7 +53,7 @@ export const PICS = {
 }
 
 export default {
-  ...FACES,
+  // ...FACES,
   bgBlue,
   bgRed,
   frame,
