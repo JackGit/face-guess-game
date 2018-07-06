@@ -13,6 +13,7 @@
       <p class="c-text" v-else>游戏结束，您识别出了{{count}}名球员</p>
       <span class="c-btn" @click="clickHandler">再来一次</span>
     </div>
+    <canvas ref="canvas" class="qrcode"></canvas>
   </div>
 </template>
 
@@ -20,6 +21,7 @@
 import { PICS } from '@/constants/images'
 import VueImgLoader from 'vue-img-loader'
 import random from 'lodash.random'
+import QRCode from 'qrcode'
 
 const picKeys = Object.keys(PICS)
 
@@ -39,6 +41,17 @@ export default {
       imgHeight: window.innerHeight * .8,
       allRight: count === window.game.questions.length
     }
+  },
+
+  mounted () {
+    QRCode.toCanvas(this.$refs.canvas, window.location.href, {
+      margin: 2,
+      width: 60,
+      color: {
+        dark: '#0f3e78ff',
+        light: '#ffffffff'
+      }
+    })
   },
 
   methods: {
@@ -86,5 +99,13 @@ export default {
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+.qrcode {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
 }
 </style>

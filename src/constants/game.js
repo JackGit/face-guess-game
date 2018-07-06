@@ -11,7 +11,7 @@ const DATA = [
   { id: '007', nameCN: '厄齐尔', nameEN: 'Mesut Özil', image: FACES.face08 },
   { id: '008', nameCN: '内马尔', nameEN: 'Neymar', image: FACES.face09 },
   { id: '009', nameCN: '穆勒', nameEN: 'Thomas Müller', image: FACES.face10 },
-  { id: '010', nameCN: '穆罕默德', nameEN: 'Mohamed Salah', image: FACES.face11 },
+  { id: '010', nameCN: '萨拉赫', nameEN: 'Mohamed Salah', image: FACES.face11 },
   { id: '011', nameCN: '梅西', nameEN: 'Messi', image: FACES.face12 },
   { id: '012', nameCN: '姆巴佩', nameEN: 'Kylian Mbappé', image: FACES.face13 },
   { id: '013', nameCN: '凯恩 ', nameEN: 'Harry Kane', image: FACES.face14 },
