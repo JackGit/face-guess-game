@@ -1,21 +1,10 @@
-# face-guess-game
+## a little canvas based H5 game
+http://h5.jackyang.me/face-guess-game/
 
-> A Vue.js project
+also, with Vue.js
 
-## Build Setup
+## My H5 works
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+1. 3D scrolling controlled [FIFA](https://github.com/JackGit/fifa) introduction
+2. [Xplan](https://github.com/JackGit/xplan), a rotating earth H5 page with Vue and threejs
+3. A small canvas game [2016 Recap](https://github.com/jackyang-me/2016-recap.jackyang.me)
