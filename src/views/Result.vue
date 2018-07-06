@@ -105,7 +105,6 @@ export default {
   z-index: 10;
   top: 10px;
   right: 10px;
-  width: 20px;
-  height: 20px;
+  border-radius: 2px;
 }
 </style>
